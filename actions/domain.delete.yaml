@@ -1,5 +1,5 @@
 ---
-description: null
+description: "Delete disabled domain(s)"
 enabled: true
 entry_point: src/wrapper.py
 name: domain.delete
@@ -11,18 +11,12 @@ parameters:
     cloud:
         description: A specific cloud to query
         type: string
-    ep:
-        default: EntryPoint.parse('domain_delete = openstackclient.identity.v3.domain:DeleteDomain')
-        immutable: true
-        type: string
-    # project_id:
-    #     description: Run the action under a different project, identified by id
-    #     type: string
-    # project_name:
-    #     description: Run the action under a different project, identified by name
-    #     type: string
     domain:
         description: Domain(s) to delete (name or ID)
         required: true
+        type: string
+    ep:
+        default: EntryPoint.parse('domain_delete = openstackclient.identity.v3.domain:DeleteDomain')
+        immutable: true
         type: string
 runner_type: python-script

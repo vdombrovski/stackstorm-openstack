@@ -1,5 +1,5 @@
 ---
-description: null
+description: "Show properties of a domain"
 enabled: true
 entry_point: src/wrapper.py
 name: domain.show
