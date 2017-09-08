@@ -1,0 +1,39 @@
+---
+description: "List user groups"
+enabled: true
+entry_point: src/wrapper.py
+name: group.list
+parameters:
+    base:
+        default: group list
+        immutable: true
+        type: string
+    cloud:
+        description: A specific cloud to query
+        type: string
+    domain:
+        type: string
+        description: Filter group list by domain (name or ID)
+    ep:
+        default: EntryPoint.parse('group_list = openstackclient.identity.v3.group:ListGroup')
+        immutable: true
+        type: string
+    format:
+        default: json
+        description: 'the output format, defaults to table (choices: csv, json, table,
+            value, yaml)'
+        type: string
+    long:
+        description: List additional fields in output
+        type: boolean
+    noindent:
+        default: false
+        description: whether to disable indenting the JSON
+        type: boolean
+    user:
+        description: Filter group list by user (name or ID)
+        type: string
+    user_domain:
+        description: Domain the user belongs to (name or ID).
+        type: string
+runner_type: python-script

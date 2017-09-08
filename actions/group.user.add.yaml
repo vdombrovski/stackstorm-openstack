@@ -1,0 +1,43 @@
+---
+description: "Add a user to a user group"
+enabled: true
+entry_point: src/wrapper.py
+name: group.user.add
+parameters:
+    base:
+        default: group add user
+        immutable: true
+        type: string
+    cloud:
+        description: A specific cloud to query
+        type: string
+    ep:
+        default: EntryPoint.parse('group_add_user = openstackclient.identity.v3.group:AddUserToGroup')
+        immutable: true
+        type: string
+    format:
+        default: json
+        description: 'the output format, defaults to table (choices: json, shell,
+            table, value, yaml)'
+        type: string
+    group:
+        description: Group to contain the user (name or ID)
+        type: string
+        required: true
+    group_domain:
+        description: Domain the group belongs to (name or ID)
+        type: string
+    noindent:
+        default: false
+        description: whether to disable indenting the JSON
+        type: boolean
+    user:
+        description: User(s) to add to group (name or ID)
+        type: string
+        required: true
+    user_domain:
+        description: Domain the user belongs to (name or ID)
+        type: string
+
+
+runner_type: python-script

@@ -49,6 +49,8 @@ DASH_PARAMETERS = [
     "snapshot_id",
     "all_projects",
     "end_marker",
+    "user_domain",
+    "group_domain"
 ]
 
 

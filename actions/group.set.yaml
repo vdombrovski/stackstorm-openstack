@@ -1,0 +1,30 @@
+---
+description: "Modify user group properties"
+enabled: true
+entry_point: src/wrapper.py
+name: group.set
+parameters:
+    base:
+        default: group set
+        immutable: true
+        type: string
+    cloud:
+        description: A specific cloud to query
+        type: string
+    description:
+        description: Set group description
+        type: string
+    domain:
+        description: Domain containing group (name or ID)
+        type: string
+    ep:
+        default: EntryPoint.parse('group_set = openstackclient.identity.v3.group:SetGroup')
+        immutable: true
+        type: string
+    group:
+        description: Group to modify
+        type: string
+    name:
+        description: Set group name
+        type: string
+runner_type: python-script

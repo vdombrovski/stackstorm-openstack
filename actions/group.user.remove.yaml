@@ -1,0 +1,41 @@
+---
+description: "Remove user from user group"
+enabled: true
+entry_point: src/wrapper.py
+name: group.user.remove
+parameters:
+    base:
+        default: group remove user
+        immutable: true
+        type: string
+    cloud:
+        description: A specific cloud to query
+        type: string
+    ep:
+        default: EntryPoint.parse('group_remove_user = openstackclient.identity.v3.group:RemoveUserFromGroup')
+        immutable: true
+        type: string
+    format:
+        default: json
+        description: 'the output format, defaults to table (choices: json, shell,
+            table, value, yaml)'
+        type: string
+    group:
+        description: Group containing the user (name or ID)
+        type: string
+        required: true
+    group_domain:
+        description: Domain the group belongs to (name or ID)
+        type: string
+    noindent:
+        default: false
+        description: whether to disable indenting the JSON
+        type: boolean
+    user:
+        description: User(s) to remove from group (name or ID)
+        type: string
+        required: true
+    user_domain:
+        description: Domain the user belongs to (name or ID)
+        type: string
+runner_type: python-script

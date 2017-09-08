@@ -1,0 +1,25 @@
+---
+description: "Delete a user group"
+enabled: true
+entry_point: src/wrapper.py
+name: group.delete
+parameters:
+    base:
+        default: group delete
+        immutable: true
+        type: string
+    cloud:
+        description: A specific cloud to query
+        type: string
+    domain:
+        description: Domain containing group(s) (name or ID)
+        type: string
+    ep:
+        default: EntryPoint.parse('group_delete = openstackclient.identity.v3.group:DeleteGroup')
+        immutable: true
+        type: string
+    groups:
+        description: Group(s) to delete (name or ID)
+        required: true
+        type: string
+runner_type: python-script
