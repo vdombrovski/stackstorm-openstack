@@ -1,5 +1,5 @@
 ---
-description: "List user groups"
+description: List user groups
 enabled: true
 entry_point: src/wrapper.py
 name: group.list

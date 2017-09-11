@@ -1,5 +1,5 @@
 ---
-description: "Remove user from user group"
+description: Remove user from user group
 enabled: true
 entry_point: src/wrapper.py
 name: group.user.remove
@@ -27,6 +27,7 @@ parameters:
     group_domain:
         description: Domain the group belongs to (name or ID)
         type: string
+        default: default
     noindent:
         default: false
         description: whether to disable indenting the JSON
@@ -38,4 +39,5 @@ parameters:
     user_domain:
         description: Domain the user belongs to (name or ID)
         type: string
+        default: default
 runner_type: python-script

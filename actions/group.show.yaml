@@ -1,5 +1,5 @@
 ---
-description: "Show properties of a user group"
+description: Show properties of a user group
 enabled: true
 entry_point: src/wrapper.py
 name: group.show
@@ -31,5 +31,4 @@ parameters:
         default: false
         description: whether to disable indenting the JSON
         type: boolean
-
 runner_type: python-script

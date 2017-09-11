@@ -1,5 +1,5 @@
 ---
-description: "Create a user group"
+description: Create a user group
 enabled: true
 entry_point: src/wrapper.py
 name: group.create

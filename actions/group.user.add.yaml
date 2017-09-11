@@ -1,15 +1,12 @@
 ---
-description: "Add a user to a user group"
+description: Add a user to a user group
 enabled: true
 entry_point: src/wrapper.py
-name: group.user.add
+name: group.add.user
 parameters:
     base:
         default: group add user
         immutable: true
-        type: string
-    cloud:
-        description: A specific cloud to query
         type: string
     ep:
         default: EntryPoint.parse('group_add_user = openstackclient.identity.v3.group:AddUserToGroup')
@@ -27,6 +24,7 @@ parameters:
     group_domain:
         description: Domain the group belongs to (name or ID)
         type: string
+        default: default
     noindent:
         default: false
         description: whether to disable indenting the JSON
@@ -38,6 +36,5 @@ parameters:
     user_domain:
         description: Domain the user belongs to (name or ID)
         type: string
-
-
+        default: default
 runner_type: python-script

@@ -1,5 +1,5 @@
 ---
-description: "Modify user group properties"
+description: Modify user group properties
 enabled: true
 entry_point: src/wrapper.py
 name: group.set

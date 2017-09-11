@@ -1,5 +1,5 @@
 ---
-description: "Check if user is part of user group"
+description: Check if user is part of user group
 enabled: true
 entry_point: src/wrapper.py
 name: group.user.contains

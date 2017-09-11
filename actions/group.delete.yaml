@@ -1,5 +1,5 @@
 ---
-description: "Delete a user group"
+description: Delete a user group
 enabled: true
 entry_point: src/wrapper.py
 name: group.delete
@@ -14,6 +14,7 @@ parameters:
     domain:
         description: Domain containing group(s) (name or ID)
         type: string
+        default: default
     ep:
         default: EntryPoint.parse('group_delete = openstackclient.identity.v3.group:DeleteGroup')
         immutable: true
