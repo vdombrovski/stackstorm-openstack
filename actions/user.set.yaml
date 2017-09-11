@@ -1,5 +1,5 @@
 ---
-description: null
+description: Set user properties
 enabled: true
 entry_point: src/wrapper.py
 name: user.set
@@ -8,8 +8,11 @@ parameters:
         default: user set
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    description:
+        description: Set user description
+        type: string
+    domain:
+        description: Domain the user belongs to (name or ID)
         type: string
     disable:
         default: false
@@ -23,7 +26,7 @@ parameters:
         description: Enable user (default)
         type: boolean
     ep:
-        default: EntryPoint.parse('user_set = openstackclient.identity.v2_0.user:SetUser')
+        default: EntryPoint.parse('user_set = openstackclient.identity.v3.user:SetUser')
         immutable: true
         type: string
     name:
@@ -39,11 +42,8 @@ parameters:
     project:
         description: Set default project (name or ID)
         type: string
-    project_id:
-        description: Run the action under a different project, identified by id
-        type: string
-    project_name:
-        description: Run the action under a different project, identified by name
+    project_domain:
+        description: Domain the project belongs to (name or ID).
         type: string
     user:
         description: User to modify (name or ID)
