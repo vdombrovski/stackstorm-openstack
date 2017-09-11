@@ -1,5 +1,5 @@
 ---
-description: null
+description: Display project details
 enabled: true
 entry_point: src/wrapper.py
 name: project.show
@@ -8,11 +8,15 @@ parameters:
         default: project show
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    children:
+        description: Show project’s subtree (children) as a list
+        type: boolean
+        default: false
+    domain:
+        description: Domain owning <project> (name or ID)
         type: string
     ep:
-        default: EntryPoint.parse('project_show = openstackclient.identity.v2_0.project:ShowProject')
+        default: EntryPoint.parse('project_show = openstackclient.identity.v3.project:ShowProject')
         immutable: true
         type: string
     format:
@@ -24,14 +28,12 @@ parameters:
         default: false
         description: whether to disable indenting the JSON
         type: boolean
+    parents:
+        description: Show the project’s parents as a list
+        type: boolean
+        default: false
     project:
         description: Project to display (name or ID)
         required: true
-        type: string
-    project_id:
-        description: Run the action under a different project, identified by id
-        type: string
-    project_name:
-        description: Run the action under a different project, identified by name
         type: string
 runner_type: python-script

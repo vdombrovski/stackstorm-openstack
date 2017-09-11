@@ -1,5 +1,5 @@
 ---
-description: null
+description: Create new project
 enabled: true
 entry_point: src/wrapper.py
 name: project.create
@@ -8,9 +8,6 @@ parameters:
         default: project create
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
-        type: string
     description:
         description: Project description
         type: string
@@ -18,12 +15,16 @@ parameters:
         default: false
         description: Disable project
         type: boolean
+    domain:
+        description: Domain owning the project (name or ID)
+        type: string
+        default: default
     enable:
         default: false
         description: Enable project (default)
         type: boolean
     ep:
-        default: EntryPoint.parse('project_create = openstackclient.identity.v2_0.project:CreateProject')
+        default: EntryPoint.parse('project_create = openstackclient.identity.v3.project:CreateProject')
         immutable: true
         type: string
     format:
@@ -43,11 +44,8 @@ parameters:
         default: false
         description: Return existing project
         type: boolean
-    project_id:
-        description: Run the action under a different project, identified by id
-        type: string
-    project_name:
-        description: Run the action under a different project, identified by name
+    parent:
+        description: Parent of the project (name or ID)
         type: string
     property:
         description: Add a property to <name> (repeat option to set multiple properties)

@@ -1,5 +1,5 @@
 ---
-description: null
+description: List projects
 enabled: true
 entry_point: src/wrapper.py
 name: project.list
@@ -8,11 +8,11 @@ parameters:
         default: project list
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    domain:
+        description: Filter projects by <domain>
         type: string
     ep:
-        default: EntryPoint.parse('project_list = openstackclient.identity.v2_0.project:ListProject')
+        default: EntryPoint.parse('project_list = openstackclient.identity.v3.project:ListProject')
         immutable: true
         type: string
     format:
@@ -24,14 +24,16 @@ parameters:
         default: false
         description: List additional fields in output
         type: boolean
+    my_projects:
+        description: List projects for the authenticated user (Supersedes other filters)
+        type: boolean
+        default: false
     noindent:
         default: false
         description: whether to disable indenting the JSON
         type: boolean
-    project_id:
-        description: Run the action under a different project, identified by id
-        type: string
-    project_name:
-        description: Run the action under a different project, identified by name
+    # TODO: implement sort
+    user:
+        description: Filter projects by <user> (name or ID)
         type: string
 runner_type: python-script

@@ -52,7 +52,8 @@ DASH_PARAMETERS = [
     "user_domain",
     "group_domain",
     "project_domain",
-    "role_domain"
+    "role_domain",
+    "my_projects"
 ]
 
 
