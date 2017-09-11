@@ -1,5 +1,5 @@
 ---
-description: null
+description: List roles
 enabled: true
 entry_point: src/wrapper.py
 name: role.list
@@ -8,11 +8,11 @@ parameters:
         default: role list
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    domain:
+        description: Filter role by <domain> (name or ID)
         type: string
     ep:
-        default: EntryPoint.parse('role_list = openstackclient.identity.v2_0.role:ListRole')
+        default: EntryPoint.parse('role_list = openstackclient.identity.v3.role:ListRole')
         immutable: true
         type: string
     format:
@@ -20,6 +20,15 @@ parameters:
         description: 'the output format, defaults to table (choices: csv, json, table,
             value, yaml)'
         type: string
+    group:
+        description: Filter roles by <group> (name or ID)
+        type: string
+    group_domain:
+        description: Domain the group belongs to (name or ID
+        type: string
+    inherited:
+        description: Specifies if the role grant is inheritable to the sub projects.
+        type: boolean
     noindent:
         default: false
         description: whether to disable indenting the JSON
@@ -27,13 +36,13 @@ parameters:
     project:
         description: Filter roles by <project> (name or ID)
         type: string
-    project_id:
-        description: Run the action under a different project, identified by id
-        type: string
-    project_name:
-        description: Run the action under a different project, identified by name
+    project_domain:
+        description: Domain the project belongs to (name or ID)
         type: string
     user:
         description: Filter roles by <user> (name or ID)
+        type: string
+    user_domain:
+        description: Domain the user belongs to (name or ID)
         type: string
 runner_type: python-script

@@ -1,5 +1,5 @@
 ---
-description: null
+description: List role assignments
 enabled: true
 entry_point: src/wrapper.py
 name: role.assignment.list
@@ -17,11 +17,15 @@ parameters:
         default: role assignment list
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    domain:
+        description: Domain to filter
         type: string
+    effective:
+        description: Returns only effective role assignments
+        default: false
+        type: boolean
     ep:
-        default: EntryPoint.parse('role_assignment_list = openstackclient.identity.v2_0.role_assignment:ListRoleAssignment')
+        default: EntryPoint.parse('role_assignment_list = openstackclient.identity.v3.role_assignment:ListRoleAssignment')
         immutable: true
         type: string
     format:
@@ -29,6 +33,15 @@ parameters:
         description: 'the output format, defaults to table (choices: csv, json, table,
             value, yaml)'
         type: string
+    group:
+        description: Group to filter (name or ID)
+        type: string
+    group_domain:
+        description: Domain the group belongs to (name or ID)
+        type: string
+    inherited:
+        description: Specifies if the role grant is inheritable to the sub projects
+        type: boolean
     names:
         default: false
         description: Display names instead of IDs
@@ -40,13 +53,19 @@ parameters:
     project:
         description: Project to filter (name or ID)
         type: string
-    project_id:
-        description: Run the action under a different project, identified by id
+    project_domain:
+        description: Domain the project belongs to (name or ID)
         type: string
-    project_name:
-        description: Run the action under a different project, identified by name
+    role:
+        description: Role to filter (name or ID)
+        type: string
+    role_domain:
+        description: Domain the role belongs to (name or ID)
         type: string
     user:
         description: User to filter (name or ID)
+        type: string
+    user_domain:
+        description: Domain the user belongs to (name or ID)
         type: string
 runner_type: python-script

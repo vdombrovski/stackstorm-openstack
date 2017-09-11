@@ -1,5 +1,5 @@
 ---
-description: null
+description: Add role assignment to a user or group in a project or domain
 enabled: true
 entry_point: src/wrapper.py
 name: role.add
@@ -8,11 +8,12 @@ parameters:
         default: role add
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    domain:
+        description: Include <domain> (Name or ID)
         type: string
+        default: default
     ep:
-        default: EntryPoint.parse('role_add = openstackclient.identity.v2_0.role:AddRole')
+        default: EntryPoint.parse('role_add = openstackclient.identity.v3.role:AddRole')
         immutable: true
         type: string
     format:
@@ -20,26 +21,40 @@ parameters:
         description: 'the output format, defaults to table (choices: json, shell,
             table, value, yaml)'
         type: string
+    group:
+        description: Include <group> (name or ID)
+        type: string
+    group_domain:
+        description: Domain the group belongs to (name or ID)
+        type: string
+        default: default
+    inherited:
+        description: Specifies if the role grant is inheritable to the sub projects.
+        type: boolean
     noindent:
         default: false
         description: whether to disable indenting the JSON
         type: boolean
     project:
         description: Include <project> (name or ID)
-        required: true
         type: string
-    project_id:
-        description: Run the action under a different project, identified by id
+    project_domain:
+        description: Domain the project belongs to (name or ID)
         type: string
-    project_name:
-        description: Run the action under a different project, identified by name
-        type: string
+        default: default
     role:
-        description: Role to add to <project>:<user> (name or ID)
+        description: Role to add to <project>/<domain>:<user>/<group> (name or ID)
         required: true
         type: string
+    role_domain:
+        description: Domain the role belongs to (name or ID)
+        type: string
+        default: default
     user:
         description: Include <user> (name or ID)
-        required: true
         type: string
+    user_domain:
+        description: Domain the user belongs to (name or ID)
+        type: string
+        default: default
 runner_type: python-script

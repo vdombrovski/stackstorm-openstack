@@ -1,5 +1,5 @@
 ---
-description: null
+description: "Remove role assignment from domain/project : user/group"
 enabled: true
 entry_point: src/wrapper.py
 name: role.remove
@@ -8,29 +8,32 @@ parameters:
         default: role remove
         immutable: true
         type: string
-    cloud:
-        description: A specific cloud to query
+    domain:
+        description: Include <domain> (Name or ID)
         type: string
+        default: default
     ep:
-        default: EntryPoint.parse('role_remove = openstackclient.identity.v2_0.role:RemoveRole')
+        default: EntryPoint.parse('role_remove = openstackclient.identity.v3.role:RemoveRole')
         immutable: true
         type: string
+    group:
+        description: Include <group> (Name or ID)
+        type: string
+    inherited:
+        description: Specifies if the role grant is inheritable to the sub projects
+        type: boolean
     project:
         description: Include <project> (name or ID)
-        required: true
-        type: string
-    project_id:
-        description: Run the action under a different project, identified by id
-        type: string
-    project_name:
-        description: Run the action under a different project, identified by name
         type: string
     role:
         description: Role to remove (name or ID)
         required: true
         type: string
+    role_domain:
+        description: Domain the role belongs to (name or ID)
+        type: string
+        default: default
     user:
         description: Include <user> (name or ID)
-        required: true
         type: string
 runner_type: python-script

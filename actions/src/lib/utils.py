@@ -50,7 +50,9 @@ DASH_PARAMETERS = [
     "all_projects",
     "end_marker",
     "user_domain",
-    "group_domain"
+    "group_domain",
+    "project_domain",
+    "role_domain"
 ]
 
 

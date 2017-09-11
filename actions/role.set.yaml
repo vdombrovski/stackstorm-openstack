@@ -1,18 +1,19 @@
 ---
-description: Display role details
+description: Set role properties
 enabled: true
 entry_point: src/wrapper.py
-name: role.show
+name: role.set
 parameters:
     base:
-        default: role show
+        default: role set
         immutable: true
         type: string
     domain:
         description: Domain the role belongs to
         type: string
+        default: default
     ep:
-        default: EntryPoint.parse('role_show = openstackclient.identity.v3.role:ShowRole')
+        default: EntryPoint.parse('role_set = openstackclient.identity.v3.role:SetRole')
         immutable: true
         type: string
     format:
@@ -20,12 +21,15 @@ parameters:
         description: 'the output format, defaults to table (choices: json, shell,
             table, value, yaml)'
         type: string
+    name:
+        description: Set role name
+        type: string
     noindent:
         default: false
         description: whether to disable indenting the JSON
         type: boolean
     role:
-        description: Role to display (name or ID)
-        required: true
+        description: Role to modify (Name or ID)
         type: string
+
 runner_type: python-script
