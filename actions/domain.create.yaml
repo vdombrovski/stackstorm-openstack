@@ -43,13 +43,4 @@ parameters:
         default: false
         description: Return existing project
         type: boolean
-    # project_id:
-    #     description: Run the action under a different project, identified by id
-    #     type: string
-    # project_name:
-    #     description: Run the action under a different project, identified by name
-    #     type: string
-    # property:
-    #     description: Add a property to <name> (repeat option to set multiple properties)
-    #     type: array
 runner_type: python-script

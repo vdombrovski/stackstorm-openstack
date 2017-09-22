@@ -11,7 +11,6 @@ parameters:
     domain:
         description: Include <domain> (Name or ID)
         type: string
-        default: default
     ep:
         default: EntryPoint.parse('role_remove = openstackclient.identity.v3.role:RemoveRole')
         immutable: true
@@ -32,7 +31,6 @@ parameters:
     role_domain:
         description: Domain the role belongs to (name or ID)
         type: string
-        default: default
     user:
         description: Include <user> (name or ID)
         type: string

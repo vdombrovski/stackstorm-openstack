@@ -11,7 +11,6 @@ parameters:
     domain:
         description: Domain the role belongs to
         type: string
-        default: default
     ep:
         default: EntryPoint.parse('role_create = openstackclient.identity.v3.role:CreateRole')
         immutable: true

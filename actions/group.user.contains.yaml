@@ -5,7 +5,7 @@ entry_point: src/wrapper.py
 name: group.user.contains
 parameters:
     base:
-        default: group containss user
+        default: group contains user
         immutable: true
         type: string
     cloud:
