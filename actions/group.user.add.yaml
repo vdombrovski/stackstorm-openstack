@@ -2,7 +2,7 @@
 description: Add a user to a user group
 enabled: true
 entry_point: src/wrapper.py
-name: group.add.user
+name: group.user.add
 parameters:
     base:
         default: group add user
