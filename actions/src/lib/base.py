@@ -53,7 +53,26 @@ class OpenStackBaseAction(Action):
         p = subprocess.Popen(cmd_str, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                              env=env, shell=True)
         out, err = p.communicate()
-        return self._format_output(out=out, err=err, exit=p.returncode)
+        output = self._format_output(out=out, err=err, exit=p.returncode)
+        # Workaround ec2 credentials output
+        if output and "openstack credential list" in cmd_str:
+            patched_ = []
+            for cred in output:
+                if cred['Type'] == 'ec2':
+                    try:
+                        data = json.loads(cred['Data'])
+                    except Exception:
+                        continue
+                    else:
+                        patched_item = dict(
+                                Access=data['access'],
+                                Secret=data['secret']
+                        )
+                        patched_item['Project ID'] = cred['Project ID']
+                        patched_item['User ID'] = cred['User ID']
+                        patched_.append(patched_item)
+            return patched_
+        return output
 
     @abc.abstractmethod
     def get_cmd(self, **kwargs):
